@@ -43,7 +43,7 @@
       @click.prevent="event"
       href="#"
       class="inline-block px-4 py-2 bg-green-700 border border-white-400 text-white"
-      >Добавить товар</a
+      >Обновить товар</a
     >
   </div>
 </template>
@@ -54,6 +54,7 @@ import { useRouter } from "vue-router";
 
 const VITE_BACK_API = import.meta.env.VITE_BACK_API;
 const valueInput = reactive({
+  id: "",
   title: "",
   content: "",
   category: "all",
@@ -63,6 +64,20 @@ const categories = ref([]);
 const router = useRouter();
 
 onMounted(() => {
+  api({
+    method: "GET",
+    url: VITE_BACK_API + "/products/" + router.currentRoute.value.params.id,
+    callback: (res) => {
+      valueInput.id = router.currentRoute.value.params.id;
+      valueInput.content = res.product_description;
+      valueInput.title = res.product_name;
+      valueInput.price = res.product_price;
+      valueInput.category = res.category_id;
+    },
+    error: (err) => {
+      console.log(err);
+    },
+  });
   api({
     method: "GET",
     url: VITE_BACK_API + "/categories",
@@ -76,8 +91,8 @@ onMounted(() => {
 });
 function event() {
   api({
-    method: "POST",
-    url: VITE_BACK_API + "/admin/products/create",
+    method: "patch",
+    url: VITE_BACK_API + "/products/" + router.currentRoute.value.params.id,
     data: valueInput,
     headers: `Authorization: Bearer ${sessionStorage.getItem("token")}`,
     callback: (res) => {
@@ -86,8 +101,10 @@ function event() {
       }
     },
     error: (err) => {
-      sessionStorage.removeItem("token");
-      router.push("/auth");
+      console.log(err);
+
+      // sessionStorage.removeItem("token");
+      // router.push("/auth");
     },
   });
 }

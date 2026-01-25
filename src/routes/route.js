@@ -1,5 +1,6 @@
 import AdminCreatePage from "@/pages/AdminCreatePage/AdminCreatePage.vue";
 import AdminPage from "@/pages/AdminPage/AdminPage.vue";
+import AdminUpdatePage from "@/pages/AdminUpdatePage/AdminUpdatePage.vue";
 import AuthPage from "@/pages/AuthPage/AuthPage.vue";
 import IndexPage from "@/pages/IndexPage/IndexPage.vue";
 import Post from "@/pages/PostPage/Post.vue";
@@ -14,6 +15,11 @@ const routes = [
     path: "/admin/products/create",
     component: AdminCreatePage,
     name: "createPost",
+  },
+  {
+    path: "/admin/products/update/:id",
+    component: AdminUpdatePage,
+    name: "updatePost",
   },
 ];
 

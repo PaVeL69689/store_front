@@ -1,10 +1,10 @@
 <template>
   <IndexLayout>
-    <CreatePannel />
+    <UpdataPannel />
   </IndexLayout>
 </template>
 <script setup>
-import CreatePannel from "@/components/posts/CreatePannel.vue";
 import IndexLayout from "../layouts/indexLayout/IndexLayout.vue";
+import UpdataPannel from "@/components/posts/UpdataPannel.vue";
 </script>
 <style></style>
