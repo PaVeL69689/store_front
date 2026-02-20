@@ -29,6 +29,7 @@ import { onMounted, ref, watch } from "vue";
 import { useRoute } from "vue-router";
 import IndexLayout from "../layouts/indexLayout/IndexLayout.vue";
 import api from "@/composables/api";
+import { router } from "@inertiajs/vue3";
 
 const VITE_BACK_API = import.meta.env.VITE_BACK_API;
 const post = ref([]);

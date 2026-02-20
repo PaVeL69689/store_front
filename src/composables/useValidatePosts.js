@@ -1,4 +1,4 @@
-const useValidate = (data = { email: "", password: "" }) => {
+const useValidatePosts = (data = { email: "", password: "" }) => {
   let errors = [];
 
   switch (data.email.trim()) {
@@ -14,4 +14,4 @@ const useValidate = (data = { email: "", password: "" }) => {
   return errors;
 };
 
-export default useValidate;
+export default useValidatePosts;

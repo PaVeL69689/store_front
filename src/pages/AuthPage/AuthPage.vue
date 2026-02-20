@@ -36,7 +36,7 @@
 import { reactive, ref, watch } from "vue";
 import IndexLayout from "../layouts/indexLayout/IndexLayout.vue";
 import api from "@/composables/api";
-import useValidate from "@/composables/useValidate";
+import useValidateAuth from "@/composables/useValidateAuth";
 import { useRouter } from "vue-router";
 
 const valueInput = reactive({ email: "", password: "" });
@@ -51,7 +51,7 @@ watch(valueInput, (newValue) => {
 });
 
 const login = () => {
-  errors.value = useValidate(valueInput);
+  errors.value = useValidateAuth(valueInput);
 
   if (errors.value.length == 0) {
     api({

@@ -101,10 +101,8 @@ function event() {
       }
     },
     error: (err) => {
-      console.log(err);
-
-      // sessionStorage.removeItem("token");
-      // router.push("/auth");
+      sessionStorage.removeItem("token");
+      router.push("/auth");
     },
   });
 }
